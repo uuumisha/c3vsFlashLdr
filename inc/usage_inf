@@ -1,0 +1,11 @@
+flashldr - Loader of the Flash (QNX 4.25)
+
+flashldr [options | operands]...
+Options:
+-a address        - address in flash      (0xffe90000 by default)
+-c current device - current device        (1 by default) 
+-l load device    - load device           (1 by default)
+-b base           - main or reserve base  (main by default)
+-t tmkPath        - path for elcus tmk    (/dev/tmk1 by default)
+-v verbose        - display of diagnostic messages (enabled by default)
+-f file           - filename for input    (img.dat by default)
