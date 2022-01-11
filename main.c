@@ -20,7 +20,7 @@
 //******************************************************************************
 // GLOBAL VARS
 _option option;
-extern int errorCode; // ™Æ§ ÆË®°™®
+extern int errorCode; // –∫–æ–¥ –æ—à–∏–±–∫–∏
 extern int counterError;
 //******************************************************************************
 //******************************************************************************
@@ -42,8 +42,8 @@ extern int counterError;
 //******************************************************************************
 //******************************************************************************
 // FUNCTIONS
-void GetOptions(int argc, char** argv);  //á†£‡„ß™† ≠†Á†´Ï≠ÎÂ Ø†‡†¨•‚‡Æ¢
-void PrintResult(char result);           //é‚Æ°‡†¶•≠®• ‡•ß„´Ï‚†‚Æ¢ ‡†°Æ‚Î ‰„≠™Ê®©
+void GetOptions(int argc, char** argv);  //–ó–∞–≥—Ä—É–∑–∫–∞ –Ω–∞—á–∞–ª—å–Ω—ã—Ö –ø–∞—Ä–∞–º–µ—Ç—Ä–æ–≤
+void PrintResult(char result);           //–û—Ç–æ–±—Ä–∞–∂–µ–Ω–∏–µ —Ä–µ–∑—É–ª—å—Ç–∞—Ç–æ–≤ —Ä–∞–±–æ—Ç—ã —Ñ—É–Ω–∫—Ü–∏–π
 //******************************************************************************
 //------------------------------------------------------------------------------
 //MAIN
@@ -53,19 +53,19 @@ int main(int argc, char * argv[]) {
   InfoFile infoFile_IMG;
 	InfoData infoData_IMG;
   
-  //á†£‡„ß™† ≠†Á†´Ï≠ÎÂ Ø†‡†¨•‚‡Æ¢
+  //–ó–∞–≥—Ä—É–∑–∫–∞ –Ω–∞—á–∞–ª—å–Ω—ã—Ö –ø–∞—Ä–∞–º–µ—Ç—Ä–æ–≤
   GetOptions(argc,argv);
   
   if(option.verbose)
     printf("Flash Loader [%s %s]\n",__DATE__,__TIME__);
   
-  // é‚™‡Î¢†•¨ TMK Ì´™„·† 
+  // –û—Ç–∫—Ä—ã–≤–∞–µ–º TMK —ç–ª–∫—É—Å–∞ 
   errorCode = IniTmk_KK(option.tmkPath, option.base);
   if(option.verbose)
     PrintResult(errorCode);
   if(errorCode != TMK_OPEN_OK)  return(EXIT_FAILURE);
   
-  // ÆØ‡•§•´•≠®• ØÆ´•© ·‚‡„™‚„‡Î §´Ô ß†£‡„ß™® Æ°‡†ß† ¢Æ FLASH
+  // –æ–ø—Ä–µ–¥–µ–ª–µ–Ω–∏–µ –ø–æ–ª–µ–π —Å—Ç—Ä—É–∫—Ç—É—Ä—ã –¥–ª—è –∑–∞–≥—Ä—É–∑–∫–∏ –æ–±—Ä–∞–∑–∞ –≤–æ FLASH
   infoData_IMG.device_K312_1        = false;
 	infoData_IMG.num_device           = option.currDevice;
 	infoData_IMG.num_device_download  = option.loadDevice;
@@ -74,7 +74,7 @@ int main(int argc, char * argv[]) {
   infoData_IMG.offset               = 0x0000;
   infoData_IMG.segment              = 0x2000;
   
-  // ÆØ‡•§•´•≠®• ØÆ´•© ·‚‡„™‚„‡Î §´Ô ß†£‡„ß™® Æ°‡†ß† ¢ éáì
+  // –æ–ø—Ä–µ–¥–µ–ª–µ–Ω–∏–µ –ø–æ–ª–µ–π —Å—Ç—Ä—É–∫—Ç—É—Ä—ã –¥–ª—è –∑–∞–≥—Ä—É–∑–∫–∏ –æ–±—Ä–∞–∑–∞ –≤ –û–ó–£
 	infoFile_IMG.file_name      = option.fileName;
   infoFile_IMG.file_size      = 0;
   infoFile_IMG.file_seek      = 0;
@@ -91,7 +91,7 @@ int main(int argc, char * argv[]) {
   }
   infoFile_IMG.file_size = FileSize(infoFile_IMG.fp);
     
-  // é‚™‡Î¢†•¨ ‰†©´ Ø‡Æ£‡†¨¨†‚Æ‡† §´Ô Á‚•≠®Ô
+  // –û—Ç–∫—Ä—ã–≤–∞–µ–º —Ñ–∞–π–ª –ø—Ä–æ–≥—Ä–∞–º–º–∞—Ç–æ—Ä–∞ –¥–ª—è —á—Ç–µ–Ω–∏—è
   errorCode = FileOpen(PrgName);
   if(option.verbose)
     PrintResult(errorCode);
@@ -101,7 +101,7 @@ int main(int argc, char * argv[]) {
     return(EXIT_FAILURE);
   }
   
-  // à≠®Ê®†´®ß†Ê®Ô Ø‡®°Æ‡† ® Ø•‡•¢Æ§ ¢ ‚•Â≠Æ´Æ£®Á•·™®© ‡•¶®¨
+  // –ò–Ω–∏—Ü–∏–∞–ª–∏–∑–∞—Ü–∏—è –ø—Ä–∏–±–æ—Ä–∞ –∏ –ø–µ—Ä–µ–≤–æ–¥ –≤ —Ç–µ—Ö–Ω–æ–ª–æ–≥–∏—á–µ—Å–∫–∏–π —Ä–µ–∂–∏–º
   errorCode = InitializationDevice(); 
   if(option.verbose)
     PrintResult(errorCode);
@@ -112,7 +112,7 @@ int main(int argc, char * argv[]) {
     return(EXIT_FAILURE); 
   }
   
-  // á†£‡„ß™† Ø‡Æ£‡†¨¨†‚Æ‡† ¢ éáì Ø‡®°Æ‡†
+  // –ó–∞–≥—Ä—É–∑–∫–∞ –ø—Ä–æ–≥—Ä–∞–º–º–∞—Ç–æ—Ä–∞ –≤ –û–ó–£ –ø—Ä–∏–±–æ—Ä–∞
   errorCode = DownloadPRG();
   if(option.verbose)
     PrintResult(errorCode);
@@ -126,7 +126,7 @@ int main(int argc, char * argv[]) {
   if(option.verbose)
       printf("\n");
   
-  // á†£‡„ß™† Æ°‡†ß† ¢Æ flash Ø‡®°Æ‡†
+  // –ó–∞–≥—Ä—É–∑–∫–∞ –æ–±—Ä–∞–∑–∞ –≤–æ flash –ø—Ä–∏–±–æ—Ä–∞
   while (!infoFile_IMG.file_eof && counterError < 3) {
 		if (!ReadIMG(&infoFile_IMG)) {
 			infoFile_IMG.file_eof = true;
@@ -155,19 +155,19 @@ int main(int argc, char * argv[]) {
 //END MAIN
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-// Ä≠†´®ß †‡£„¨•≠‚Æ¢ 
+// –ê–Ω–∞–ª–∏–∑ –∞—Ä–≥—É–º–µ–Ω—Ç–æ–≤ 
 //------------------------------------------------------------------------------
 void GetOptions(int argc, char** argv) {
   int errflag = 0;
   int arg;
   
-  option.flashAddr    = 0xffe90000;     // -a †§‡•· ¢Æ ‰´•Ë•
-  option.currDevice   = 0x1;            // -c à¨Ô ‚•™„È•£Æ Ø‡®°Æ‡†
-  option.loadDevice   = 0x1;            // -l à¨Ô Ø‡ÆË®¢†•¨Æ£Æ Ø‡®°Æ‡†
-  option.base         = false;          // -b ÇÎ°Æ‡ Æ·≠Æ¢≠†Ô / ‡•ß•‡¢≠†Ô Ë®≠† ää
-  option.tmkPath      = NULL;           // -t Ø„‚Ï ™ tmk (/dev/tmk0 ØÆ „¨Æ´Á†≠®Ó)
-  option.verbose      = true;           // -v ÇÎ¢Æ§ ÂÆ§† ‡†°Æ‚Î Ø‡Æ£‡†¨¨Î
-  option.fileName     = NULL;           // -f à¨Ô ‰†©´†
+  option.flashAddr    = 0xffe90000;     // -a –∞–¥—Ä–µ—Å –≤–æ —Ñ–ª–µ—à–µ
+  option.currDevice   = 0x1;            // -c –ò–º—è —Ç–µ–∫—É—â–µ–≥–æ –ø—Ä–∏–±–æ—Ä–∞
+  option.loadDevice   = 0x1;            // -l –ò–º—è –ø—Ä–æ—à–∏–≤–∞–µ–º–æ–≥–æ –ø—Ä–∏–±–æ—Ä–∞
+  option.base         = false;          // -b –í—ã–±–æ—Ä –æ—Å–Ω–æ–≤–Ω–∞—è / —Ä–µ–∑–µ—Ä–≤–Ω–∞—è —à–∏–Ω–∞ –ö–ö
+  option.tmkPath      = NULL;           // -t –ø—É—Ç—å –∫ tmk (/dev/tmk0 –ø–æ —É–º–æ–ª—á–∞–Ω–∏—é)
+  option.verbose      = true;           // -v –í—ã–≤–æ–¥ —Ö–æ–¥–∞ —Ä–∞–±–æ—Ç—ã –ø—Ä–æ–≥—Ä–∞–º–º—ã
+  option.fileName     = NULL;           // -f –ò–º—è —Ñ–∞–π–ª–∞
   
   while((arg = getopt(argc, argv, "a:c:l:t:vf:b")) != -1) { 
     switch( arg ) {
@@ -204,7 +204,7 @@ void GetOptions(int argc, char** argv) {
   return;
 }  
 //------------------------------------------------------------------------------
-//END Ä≠†´®ß †‡£„¨•≠‚Æ¢ 
+//END –ê–Ω–∞–ª–∏–∑ –∞—Ä–≥—É–º–µ–Ω—Ç–æ–≤ 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //Print Error
